@@ -5,13 +5,23 @@ import { useForm } from 'react-hook-form';
 import {FormContainer, FormCard, Title, TitleDescription, StyledButton, FloatingLabelContainer, FloatingLabel, InputField, ErrorMessage, StyledLink, StyledParagraph } from './Signup.styles.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './Navbar.js';
+import { signupUser } from '../utils/api';
 
 const Signup = () => {
+    
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
-    const [ successMessage, setSuccessMessage ] = useState(''); 
+    const [successMessage, setSuccessMessage] = useState('');
     const [message, setMessage] = useState('');
-
     const handleSignup = async (data) => {
+        //using the utility file for api calls:
+        const result = await signupUser(data);
+        if (result.success) {
+            setMessage('Sign up successful! Please check your email to verify your account.');
+            setSuccessMessage('Please check your email for verification.');
+        } else {
+            setMessage(result.message);
+        }
+        /*
         const response = await fetch('http://localhost:5001/api/auth/register', {
             method: 'POST',
             headers: {
@@ -26,7 +36,7 @@ const Signup = () => {
             setSuccessMessage('Please check your email for verification.');
         } else {
             setMessage(`Error: ${responseData.message}`);
-        }
+        }*/
     };
 
     return (

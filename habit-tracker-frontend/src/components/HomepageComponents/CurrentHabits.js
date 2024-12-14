@@ -5,6 +5,7 @@ import { fetchHabitDetailsBatch } from '../../services/HabitDetails';
 import EmptyState from './EmptyState';
 import { motion } from 'framer-motion';
 
+const BASE_URL = "https://habit-tracker-backend-l8el.onrender.com/api";
 const SubInfo = styled.h2`
     font-size: 0.7rem;
     font-weight: 400; 
@@ -344,7 +345,7 @@ const CurrentHabits = () => {
         try {
             const newStatus = currentStatus === "completed" ? "pending" : "completed";
             // Update status in the backend
-            const response = await fetch(`http://localhost:5001/api/habits/habit-instance/${habitInstanceId}`, {
+            const response = await fetch(`${BASE_URL}/habits/habit-instance/${habitInstanceId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ newStatus: newStatus }),

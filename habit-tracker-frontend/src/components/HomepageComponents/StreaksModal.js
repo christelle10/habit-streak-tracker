@@ -4,6 +4,8 @@ import DeleteConfirmModal from './DeleteConfirmationModal';
 import { UserContext } from '../UserContext';
 import DeleteSuccessModal from './DeletionSuccess';
 
+const BASE_URL = "https://habit-tracker-backend-l8el.onrender.com/api";
+
 const Title = styled.h2`
   font-size: 2rem;
   font-weight: 600;
@@ -221,7 +223,7 @@ const StreaksModal = ({ isVisible, closeModal, backToProgress, habit }) => {
   const handleConfirmDelete = async () => {
     try {
       // Make DELETE request to remove habit
-      const response = await fetch(`http://localhost:5001/api/habits/delete/${habit._id}`, {
+      const response = await fetch(`${BASE_URL}/habits/delete/${habit._id}`, {
         method: 'DELETE',
       });
 

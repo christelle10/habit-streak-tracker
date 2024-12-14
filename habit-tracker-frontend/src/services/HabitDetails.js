@@ -9,9 +9,11 @@
     }
 };*/
 
+const BASE_URL = "https://habit-tracker-backend-l8el.onrender.com/api";
+
 export const fetchHabitDetailsBatch = async (CurrentDayHabitIds) => {
     try {
-        const response = await fetch('http://localhost:5001/api/habits/batch', {
+        const response = await fetch(`${BASE_URL}/habits/batch`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

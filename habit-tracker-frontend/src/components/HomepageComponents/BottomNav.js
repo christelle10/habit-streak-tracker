@@ -4,6 +4,7 @@ import HabitForm from './HabitModal';
 import { UserContext } from '/Users/christelleridad/habit-streak-tracker/habit-tracker-frontend/src/components/UserContext.js';
 import UserProgressModal from './YourProgressModal';
 
+const BASE_URL = "https://habit-tracker-backend-l8el.onrender.com/api";
 const BottomNav = styled.nav`
   position: fixed;
   bottom: 0;
@@ -127,7 +128,7 @@ const BottomNavBar = () => {
     try {
       setLoading(true);
       const userId = username; // Use the logged-in user ID
-      const response = await fetch(`http://localhost:5001/api/habits/user/${userId}`); // Adjust API route as needed
+      const response = await fetch(`${BASE_URL}/habits/user/${userId}`); // Adjust API route as needed
 
       if (!response.ok) {
         throw new Error(`Failed to fetch habits: ${response.statusText}`);
@@ -154,7 +155,7 @@ const BottomNavBar = () => {
     console.log('Habit data to send:', habitData);
 
     try {
-      const response = await fetch('http://localhost:5001/api/habits/add', {
+      const response = await fetch(`${BASE_URL}/habits/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

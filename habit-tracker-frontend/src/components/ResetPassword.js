@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; // Import to get the token from the URL
-
+import { resetPassword } from '../utils/api';
 const ResetPassword = () => {
     const { token } = useParams(); // Get the token from the URL
     const navigate = useNavigate(); // For navigation after reset
@@ -10,6 +10,15 @@ const ResetPassword = () => {
     const handlePasswordReset = async (e) => {
         e.preventDefault();
 
+        const result = await resetPassword({ token, newPassword });
+
+        if (result.success) {
+            setMessage('Password reset successful! You can now sign in.');
+            setTimeout(() => navigate('/signin'), 2000);
+        } else {
+            setMessage(result.message || 'An error occurred. Please try again later.');
+        }
+        /*
         try {
             const response = await fetch('http://localhost:5001/api/auth/reset-password', {
                 method: 'POST',
@@ -32,6 +41,7 @@ const ResetPassword = () => {
         } catch (error) {
             setMessage('An error occurred. Please try again later.');
         }
+        */
     };
 
     return (

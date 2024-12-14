@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './Navbar.js';
 import { UserContext } from './UserContext.js';
 import { useNavigate } from 'react-router-dom';
-
+import { signinUser } from '../utils/api';
 
 const Signin = () => {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
@@ -18,7 +18,18 @@ const Signin = () => {
     const { setCurrentDayHabitInstances } = useContext(UserContext);
 
     const handleSignin = async (data) => {
-        console.log('Form Data:', data);
+        //using the utility file for api calls
+        const result = await signinUser(data);
+        if (result.success) {
+            setMessage('Sign in successful!');
+            setUsername(data.username);
+            setCurrentDayHabitIds(result.data.habitIds);
+            setCurrentDayHabitInstances(result.data.habitInstances);
+            navigate('/homepage');
+        } else {
+            setMessage(result.message);
+        }
+        /*console.log('Form Data:', data);
         const response = await fetch('http://localhost:5001/api/auth/login', {
             method: 'POST',
             headers: {
@@ -41,7 +52,7 @@ const Signin = () => {
             setMessage('User not found. Please check your username.');
         } else {
             setMessage(`Error: ${responseData.message}`);
-        }
+        }*/
     };
 
     return (

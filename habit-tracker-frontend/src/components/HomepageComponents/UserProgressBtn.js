@@ -2,6 +2,8 @@ import React, { useState, useContext, useCallback } from "react";
 import UserProgressModal from "./YourProgressModal";
 import { UserContext } from "../UserContext";
 
+const BASE_URL = "https://habit-tracker-backend-l8el.onrender.com/api";
+
 const UserProgressButton = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -12,7 +14,7 @@ const UserProgressButton = () => {
     try {
       setLoading(true);
       const userId = username; // Replace with the actual logged-in user ID
-      const response = await fetch(`http://localhost:5001/api/habits/user/${userId}`); // Adjust the API route
+      const response = await fetch(`${BASE_URL}/habits/user/${userId}`); // Adjust the API route
 
       if (!response.ok) {
         throw new Error(`Failed to fetch habits: ${response.statusText}`);

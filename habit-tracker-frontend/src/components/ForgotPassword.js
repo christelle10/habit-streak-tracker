@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { forgotPassword } from '../utils/api';
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
@@ -6,7 +7,14 @@ const ForgotPassword = () => {
 
     const handleForgotPassword = async (e) => {
         e.preventDefault();
+        const result = await forgotPassword({ email });
 
+        if (result.success) {
+            setMessage('Check your email for a reset link.');
+        } else {
+            setMessage(result.message || 'An error occurred. Please try again later.');
+        }
+        /*
         try {
             const response = await fetch('http://localhost:5001/api/auth/forgot-password', {
                 method: 'POST',
@@ -24,7 +32,7 @@ const ForgotPassword = () => {
             }
         } catch (error) {
             setMessage('An error occurred. Please try again later.');
-        }
+        }*/
     };
 
     return (

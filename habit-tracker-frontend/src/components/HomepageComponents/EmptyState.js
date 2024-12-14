@@ -3,7 +3,7 @@ import styled from "styled-components";
 import HabitForm from './HabitModal';
 import { UserContext } from '/Users/christelleridad/habit-streak-tracker/habit-tracker-frontend/src/components/UserContext.js';
 
-
+const BASE_URL = "https://habit-tracker-backend-l8el.onrender.com/api";
 const EmptyStateContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -104,7 +104,7 @@ const EmptyState = () => {
         console.log('Habit data to send:', habitData);
     
         try {
-          const response = await fetch('http://localhost:5001/api/habits/add', {
+          const response = await fetch(`${BASE_URL}/habits/add`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
