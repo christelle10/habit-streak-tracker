@@ -1,8 +1,7 @@
 import React, { useContext, useState, useCallback } from 'react';
 import styled from "styled-components";
 import HabitForm from './HabitModal';
-import { UserContext } from '/Users/christelleridad/habit-streak-tracker/habit-tracker-frontend/src/components/UserContext.js';
-
+import { UserContext } from '../UserContext';
 
 const EmptyStateContainer = styled.div`
   display: flex;
