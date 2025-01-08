@@ -1,6 +1,6 @@
 import React, { useContext, useState, useCallback } from 'react';
 import styled from "styled-components";
-import HabitForm from './HabitModal';
+import { HabitForm } from './HabitModal';
 import { UserContext } from '../UserContext';
 
 const BASE_URL = "https://habit-tracker-backend-l8el.onrender.com/api";

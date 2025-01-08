@@ -145,3 +145,10 @@ export const StyledLink = styled(Link)`
     &:hover {
         color:#645e6e }
 `
+
+export const StyledLabel = styled.label`
+    font-size: 1rem; 
+    color: #252329; 
+    margin-bottom: 0.5rem; 
+    font-weight: bold;
+`;

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useCallback } from 'react';
 import styled from 'styled-components';
-import HabitForm from './HabitModal';
+import { HabitForm } from './HabitModal';
 import { UserContext } from '../UserContext';
 import UserProgressModal from './YourProgressModal';
 

@@ -277,4 +277,4 @@ const HabitForm = ({ closeModal, onSubmit, username, show }) => {
   );
 };
 
-export default HabitForm;
+export { HabitForm, StyledLabel } ;
