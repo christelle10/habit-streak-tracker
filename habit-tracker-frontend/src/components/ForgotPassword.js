@@ -14,8 +14,10 @@ const ForgotPassword = () => {
 
         if (result.success) {
             setMessage('Check your email for a reset link.');
+            console.log("Sent reset link to email");
         } else {
             setMessage(result.message || 'An error occurred. Please try again later.');
+            console.log("Email verification for forgot password failed");
         }
         /*
         try {
@@ -55,11 +57,12 @@ const ForgotPassword = () => {
                     />
                 </FloatingLabelContainer>
                 <StyledButton type="submit">Send Reset Link</StyledButton>
+                {message && <StyledParagraph>{message}</StyledParagraph>} {/* Display the message here */}
                 <StyledParagraph>
                     Remembered your password already? Go back to <StyledLink to="/signin">Sign In.</StyledLink>
                 </StyledParagraph>
             </FormCard>
-            {message && <p>{message}</p>} {/* Display the message here */}
+            
         </FormContainer>
     );
 };
