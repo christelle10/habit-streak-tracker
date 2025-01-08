@@ -43,20 +43,22 @@ const ForgotPassword = () => {
     return (
         <FormContainer>
             <Navbar />
-            <FormCard onSubmit={handleForgotPassword}>
-                <Title>Forgot Password</Title>
-                <TitleDescription>Enter the email you used to create an account.</TitleDescription>
-                <FloatingLabelContainer>
-                    <StyledLabel>Email:</StyledLabel>
-                    <InputField 
-                        type="email" 
-                        value={email} 
-                        placeholder=" "
-                        onChange={(e) => setEmail(e.target.value)} 
-                        required 
-                    />
-                </FloatingLabelContainer>
-                <StyledButton type="submit">Send Reset Link</StyledButton>
+            <FormCard className='fade-in'>
+                <form onSubmit={handleForgotPassword}>
+                    <Title>Forgot Password</Title>
+                    <TitleDescription>Enter the email you used to create an account.</TitleDescription>
+                    <FloatingLabelContainer>
+                        <StyledLabel>Email:</StyledLabel>
+                        <InputField 
+                            type="email" 
+                            value={email} 
+                            placeholder=" "
+                            onChange={(e) => setEmail(e.target.value)} 
+                            required 
+                        />
+                    </FloatingLabelContainer>
+                    <StyledButton type="submit">Send Reset Link</StyledButton>
+                </form>
                 {message && <StyledParagraph>{message}</StyledParagraph>} {/* Display the message here */}
                 <StyledParagraph>
                     Remembered your password already? Go back to <StyledLink to="/signin">Sign In.</StyledLink>
