@@ -195,7 +195,8 @@ router.post('/forgot-password', async (req, res) => {
         user.resetPassTokenExpiration = resetTokenExpiration;
         await user.save();
 
-        const resetLink = `http://localhost:3000/reset-password/${resetToken}`;
+        //reset link should be the actual hosting platform, not local url
+        const resetLink = `https://streaks2habits.vercel.app/reset-password/${resetToken}`;
         
         const transporter = nodemailer.createTransport({
             service: 'gmail',
