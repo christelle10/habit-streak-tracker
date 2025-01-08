@@ -210,7 +210,35 @@ router.post('/forgot-password', async (req, res) => {
             from: process.env.EMAIL_USER,
             to: user.email,
             subject: 'Password Reset',
-            html: `<p>Click <a href="${resetLink}">here</a> to reset your password. The link is valid for 1 hour.</p>`,
+            html: `
+                <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,700;1,700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+                </style>
+
+                <div style="font-family: Raleway, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px;">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <img src="https://i.imgur.com/tquC1bu.png" alt="Logo" style="max-width: 150px;">
+                    </div>
+                    <h2 style="text-align: center; color: #333;">Reset password on your account on steps2habits!</h2>
+              
+                    <p style="color: #555; line-height: 1.5;">
+                        To reset your password, kindly click the button below.
+                    </p>
+                    <div style="text-align: center; margin: 20px 0;">
+                        <a href="${resetLink}" style="background-color: #007BFF; color: #fff; text-decoration: none; padding: 12px 20px; border-radius: 5px; font-size: 16px;">
+                            Verify My Email
+                        </a>
+                    </div>
+                    <p style="color: #555; line-height: 1.5;">
+                        If you didn't request this email, please ignore it. If you have any questions, feel free to contact me at 
+                        <a href="mailto:christellejoyridad@gmail.com" style="color: #007BFF;">christellejoyridad@gmail.com</a>.
+                    </p>
+                    <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 20px 0;">
+                    <p style="text-align: center; color: #aaa; font-size: 12px;">
+                        &copy; ${new Date().getFullYear()} steps2habits. All rights reserved.
+                    </p>
+                </div>
+            `,
         };
         console.log(`Reset Token: ${resetToken}`);
 
