@@ -20,6 +20,7 @@ const Layout = () => {
             
             {/* Render routes */}
             <Routes>
+                <Route path = "/" element={<Signin />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/signin" element={<Signin />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
