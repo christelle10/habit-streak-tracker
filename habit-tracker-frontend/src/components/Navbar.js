@@ -24,7 +24,7 @@ const Logo = styled.img`
 const Navbar = () => {
     return (
         <NavbarContainer>
-            <Logo src={'habit-streak-logo.png'} alt="Logo" />
+            <Logo src={'https://i.imgur.com/ASWElsg.png'} alt="Logo" />
             {/* Add your other navbar items here, like links */}
             {/*<nav>
                 <ul style={{ listStyle: 'none', display: 'flex', gap: '1rem', margin: 0, padding: 0 }}>

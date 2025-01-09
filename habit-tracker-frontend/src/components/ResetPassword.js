@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; // Import to get the token from the URL
 import { resetPassword } from '../utils/api';
+import { StyledLabel, FormContainer, FormCard, Title, TitleDescription, StyledButton, FloatingLabelContainer, FloatingLabel, InputField, ErrorMessage, StyledLink, StyledParagraph } from './Signup.styles.js';
+import Navbar from './Navbar.js';
 const ResetPassword = () => {
     const { token } = useParams(); // Get the token from the URL
     const navigate = useNavigate(); // For navigation after reset
@@ -40,27 +42,33 @@ const ResetPassword = () => {
             }
         } catch (error) {
             setMessage('An error occurred. Please try again later.');
-        }
+        }  
         */
     };
 
     return (
-        <div>
-            <h2>Reset Password</h2>
-            <form onSubmit={handlePasswordReset}>
-                <div>
-                    <label>New Password:</label>
-                    <input 
-                        type="password" 
-                        value={newPassword} 
-                        onChange={(e) => setNewPassword(e.target.value)} 
-                        required 
-                    />
-                </div>
-                <button type="submit">Reset Password</button>
-            </form>
-            {message && <p>{message}</p>} {/* Display success or error message */}
-        </div>
+        <FormContainer>
+            <Navbar />
+            <FormCard className ='fade-in'>
+                <form onSubmit={handlePasswordReset}>
+                    <Title>Reset Password</Title>
+                    <TitleDescription>Enter new password to reset your account.</TitleDescription>
+                    <FloatingLabelContainer>
+                        <StyledLabel>New Password:</StyledLabel>
+                        <InputField 
+                            type="password" 
+                            value={newPassword} 
+                            onChange={(e) => setNewPassword(e.target.value)} 
+                            required 
+                        />
+                    </FloatingLabelContainer>
+                    <StyledButton type="submit">Reset Password</StyledButton>
+                </form>
+                <StyledParagraph>Go back to <StyledLink to="/signin">Sign In</StyledLink>.</StyledParagraph>
+            </FormCard>
+            {message && <StyledParagraph>{message}</StyledParagraph>} {/* Display success or error message */}
+            
+        </FormContainer>
     );
 };
 
